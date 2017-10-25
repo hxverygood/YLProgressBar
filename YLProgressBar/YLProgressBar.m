@@ -166,8 +166,8 @@ const CGFloat YLProgressBarDefaultProgress = 0.3f;
     [self drawStripes:context withRect:rect];
   } else if (self.progress > 0)
   {
-    [self drawProgressBar:context withInnerRect:innerRect outterRect:rect];
-
+      [self drawProgressBar:context withInnerRect:innerRect outterRect:rect];
+    
     if (_stripesWidth > 0 && !_hideStripes)
     {
       if (_behavior == YLProgressBarBehaviorWaiting)
@@ -254,8 +254,9 @@ const CGFloat YLProgressBarDefaultProgress = 0.3f;
   }
   else
   {
-    const CGFloat *c    = CGColorGetComponents(progressTintColor.CGColor);
-    UIColor *leftColor  = [UIColor colorWithRed:(c[0] / 2.0f) green:(c[1] / 2.0f) blue:(c[2] / 2.0f) alpha:(c[3])];
+//    const CGFloat *c    = CGColorGetComponents(progressTintColor.CGColor);
+//    UIColor *leftColor  = [UIColor colorWithRed:(c[0] / 2.0f) green:(c[1] / 2.0f) blue:(c[2] / 2.0f) alpha:(c[3])];
+    UIColor *leftColor  = progressTintColor;
     UIColor *rightColor = progressTintColor;
     NSArray *colors     = @[leftColor, rightColor];
 
@@ -645,10 +646,11 @@ const CGFloat YLProgressBarDefaultProgress = 0.3f;
       backgroundColor = (__bridge CGColorRef)[_colors lastObject];
     }
 
-    const CGFloat *components = CGColorGetComponents(backgroundColor);
-    BOOL isLightBackground    = (components[0] + components[1] + components[2]) / 3.0f >= 0.5f;
+//    const CGFloat *components = CGColorGetComponents(backgroundColor);
+//    BOOL isLightBackground    = (components[0] + components[1] + components[2]) / 3.0f >= 0.5f;
 
-    _indicatorTextLabel.textColor = (isLightBackground) ? [UIColor blackColor] : [UIColor whiteColor];
+//    _indicatorTextLabel.textColor = (isLightBackground) ? [UIColor blackColor] : [UIColor whiteColor];
+      _indicatorTextLabel.textColor = [UIColor whiteColor];
   }
 
   [_indicatorTextLabel drawTextInRect:innerRect];
